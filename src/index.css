@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,700&family=Manrope:wght@400;600&family=Space+Grotesk:wght@500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Wish Area Custom Colors */
+    --cream: 32 28% 96%;
+    --beige: 32 18% 88%;
+    --soft-white: 32 20% 99%;
+    --charcoal: 0 0% 23%;
+    --deep-brown: 20 20% 15%;
+    --sky-blue: 199 28% 73%;
+    --matte-gold: 42 45% 62%;
+    --soft-rose: 0 38% 84%;
+    
+    --background: var(--cream);
+    --foreground: var(--charcoal);
+    --card: var(--soft-white);
+    --card-foreground: var(--charcoal);
+    --popover: var(--soft-white);
+    --popover-foreground: var(--charcoal);
+    --primary: var(--deep-brown);
+    --primary-foreground: var(--soft-white);
+    --secondary: var(--beige);
+    --secondary-foreground: var(--deep-brown);
+    --muted: var(--beige);
+    --muted-foreground: var(--charcoal);
+    --accent: var(--sky-blue);
+    --accent-foreground: var(--deep-brown);
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: var(--soft-white);
+    --border: var(--beige);
+    --input: var(--beige);
+    --ring: var(--sky-blue);
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-[#F9F6F1] text-[#3A3A3A] font-[Manrope];
+    font-family: 'Manrope', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+  }
+}
+
+@layer utilities {
+  .noise-texture {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  
+  .soft-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+                0 2px 4px -1px rgba(0, 0, 0, 0.03),
+                0 10px 15px -3px rgba(232, 227, 219, 0.4);
+  }
+  
+  .soft-shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+                0 4px 6px -2px rgba(0, 0, 0, 0.03),
+                0 20px 25px -5px rgba(232, 227, 219, 0.5);
+  }
+  
+  .soft-inset {
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06),
+                inset 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  }
+  
+  .font-display {
+    font-family: 'Fraunces', serif;
+  }
+  
+  .font-body {
+    font-family: 'Manrope', sans-serif;
+  }
+  
+  .font-accent {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}

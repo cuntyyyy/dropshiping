@@ -1,9 +1,23 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Youtube, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setSubscribed(true);
+      setEmail('');
+      setTimeout(() => setSubscribed(false), 3000);
+    }
+  };
+
   return (
     <footer className="bg-[#E8E3DB] border-t border-[#E8E3DB]/50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-20">
@@ -22,19 +36,33 @@ export default function Footer() {
             <p className="font-body text-[#3A3A3A] mb-6">
               Subscribe for exclusive offers, design tips, and early access to new collections
             </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-              <Input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 rounded-full border-[#2C2420]/20 bg-[#FEFDFB] focus:ring-2 focus:ring-[#A8C5D1] focus:border-transparent px-6 py-6 font-body"
-              />
-              <Button
-                type="submit"
-                className="bg-[#2C2420] hover:bg-[#3A3A3A] text-white font-semibold rounded-full px-8 py-6 soft-shadow transition-all duration-300 hover:scale-105"
+            {subscribed ? (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center justify-center gap-2 text-green-600"
               >
-                Subscribe
-              </Button>
-            </form>
+                <CheckCircle2 className="w-5 h-5" />
+                <span className="font-body font-semibold">Thank you for subscribing!</span>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+                <Input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email address"
+                  className="flex-1 rounded-full border-[#2C2420]/20 bg-[#FEFDFB] focus:ring-2 focus:ring-[#A8C5D1] focus:border-transparent px-6 py-6 font-body"
+                  required
+                />
+                <Button
+                  type="submit"
+                  className="bg-[#2C2420] hover:bg-[#3A3A3A] text-white font-semibold rounded-full px-8 py-6 soft-shadow transition-all duration-300 hover:scale-105"
+                >
+                  Subscribe
+                </Button>
+              </form>
+            )}
           </div>
         </motion.div>
 
@@ -46,44 +74,44 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#living"
+                <Link
+                  to="/shop?category=living"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Living Room
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#bedroom"
+                <Link
+                  to="/shop?category=bedroom"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Bedroom
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#dining"
+                <Link
+                  to="/shop?category=dining"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Dining
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#decor"
+                <Link
+                  to="/shop?category=decor"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Decor
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#sale"
+                <Link
+                  to="/shop"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Sale
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -94,36 +122,36 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#our-story"
+                <Link
+                  to="/about"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Our Story
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#sustainability"
+                <Link
+                  to="/about"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Sustainability
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#blog"
+                <Link
+                  to="/blog"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#careers"
+                <Link
+                  to="/about"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Careers
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -134,36 +162,36 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#contact"
+                <Link
+                  to="/contact"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Contact Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#shipping"
+                <Link
+                  to="/about"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Shipping Info
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#returns"
+                <Link
+                  to="/about"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   Returns
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#faq"
+                <Link
+                  to="/about"
                   className="font-body text-[#3A3A3A] hover:text-[#A8C5D1] transition-colors duration-300"
                 >
                   FAQ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

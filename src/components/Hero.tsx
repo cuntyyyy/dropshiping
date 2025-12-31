@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -43,12 +45,15 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: [0.4, 0.0, 0.2, 1] }}
           >
-            <Button
-              size="lg"
-              className="bg-[#D4AF6A] hover:bg-[#c9a560] text-[#2C2420] font-semibold text-base px-10 py-6 rounded-full soft-shadow-lg hover:shadow-[0_15px_30px_-5px_rgba(212,175,106,0.4)] transition-all duration-300 hover:scale-105 active:scale-95"
-            >
-              Explore Collection
-            </Button>
+            <Link to="/shop">
+              <Button
+                size="lg"
+                className="bg-[#D4AF6A] hover:bg-[#c9a560] text-[#2C2420] font-semibold text-base px-10 py-6 rounded-full soft-shadow-lg hover:shadow-[0_15px_30px_-5px_rgba(212,175,106,0.4)] transition-all duration-300 hover:scale-105 active:scale-95"
+              >
+                Explore Collection
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </div>

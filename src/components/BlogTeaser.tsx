@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -49,15 +50,17 @@ export default function BlogTeaser() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {articles.map((article, index) => (
-            <motion.a
+            <Link
               key={article.id}
-              href={`#article-${article.id}`}
+              to={`/blog`}
               className="group"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
               <article className="bg-[#FEFDFB] rounded-2xl soft-shadow overflow-hidden transition-all duration-300 hover:soft-shadow-lg hover:translate-y-[-4px]">
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#E8E3DB]/20">
@@ -90,7 +93,8 @@ export default function BlogTeaser() {
                   </div>
                 </div>
               </article>
-            </motion.a>
+            </motion.div>
+            </Link>
           ))}
         </div>
       </div>

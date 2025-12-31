@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 export default function PromoBanner() {
   return (
@@ -42,12 +44,15 @@ export default function PromoBanner() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Button
-                size="lg"
-                className="bg-[#2C2420] hover:bg-[#3A3A3A] text-white font-semibold text-base px-10 py-6 rounded-full soft-shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
-              >
-                Shop New Arrivals
-              </Button>
+              <Link to="/shop?sort=newest">
+                <Button
+                  size="lg"
+                  className="bg-[#2C2420] hover:bg-[#3A3A3A] text-white font-semibold text-base px-10 py-6 rounded-full soft-shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
+                >
+                  Shop New Arrivals
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
